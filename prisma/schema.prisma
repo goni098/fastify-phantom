@@ -9,7 +9,6 @@ datasource db {
 
 model User {
   address String @id @db.VarChar
-  email   String
   posts   Post[]
 
   @@map("users")

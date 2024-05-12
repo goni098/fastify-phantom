@@ -2,6 +2,6 @@
   "watch": ["src"],
   "ignore": ["src/**/*.test.ts"],
   "ext": "ts,mjs,js,json,graphql",
-  "exec": "node scripts/bundle.js && node target/main.js",
+  "exec": "node scripts/bundle.js && node --env-file=./.env target/main.js",
   "legacyWatch": true
 }

@@ -25,13 +25,16 @@
     "fastify": "^4.27.0",
     "fastify-plugin": "^4.5.1",
     "fastify-type-provider-zod": "^1.1.9",
+    "ioredis": "^5.4.1",
+    "uuid": "^9.0.1",
     "viem": "^2.10.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@cspell/eslint-plugin": "^8.8.0",
+    "@cspell/eslint-plugin": "^8.8.1",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.11",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "esbuild": "^0.21.1",

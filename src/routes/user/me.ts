@@ -1,7 +1,11 @@
-// import { authPlugin } from "@root/plugins/auth.plugin";
 import type { FastifyPluginAsync } from "fastify";
+import z from "zod";
 
 import { authPlugin } from "@root/plugins/auth.plugin";
+
+const response = z.object({
+  address: z.string()
+});
 
 export const getMeHandler: FastifyPluginAsync = async self => {
   await self.register(authPlugin);
@@ -15,12 +19,14 @@ export const getMeHandler: FastifyPluginAsync = async self => {
           {
             bearerAuth: []
           }
-        ]
-      },
-      onRequest: [self.authenticate]
+        ],
+        response: {
+          200: response
+        }
+      }
     },
     request => {
-      return "?";
+      return request.user;
     }
   );
 };
