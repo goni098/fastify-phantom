@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "keywords": [],
   "scripts": {
-    "release": "node scripts/bundle.js",
+    "release": "tsc --noEmit && node scripts/bundle.js",
     "build": "tsc && tsc-alias",
     "start": "node dist/main.js",
     "start:watch": "nodemon",
