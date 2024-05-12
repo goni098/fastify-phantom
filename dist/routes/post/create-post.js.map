@@ -1,1 +1,0 @@
-{"version":3,"file":"create-post.js","sourceRoot":"","sources":["../../../src/routes/post/create-post.ts"],"names":[],"mappings":";;;AAEO,MAAM,iBAAiB,GAAuB,KAAK,EAAC,IAAI,EAAC,EAAE;IAChE,IAAI,CAAC,IAAI,CAAC,GAAG,EAAE,EAAE,EAAE,OAAO,CAAC,EAAE;QAC3B,OAAO,GAAG,CAAC;IACb,CAAC,CAAC,CAAC;AACL,CAAC,CAAC;AAJW,QAAA,iBAAiB,qBAI5B"}

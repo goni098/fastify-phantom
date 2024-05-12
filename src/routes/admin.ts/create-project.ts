@@ -6,22 +6,20 @@ export const createProjectHandler: FastifyPluginAsync<Array<string>> = async (
   self,
   options
 ) => {
-  self.register(adminAuthPlugin).after(() => {
-    self.post(
-      "/upload/files",
-      {
-        schema: {
-          tags: options,
-          security: [
-            {
-              bearerAuth: []
-            }
-          ]
-        }
-      },
-      async request => {
-        return request.user.address
+  self.register(adminAuthPlugin).post(
+    "/upload/files",
+    {
+      schema: {
+        tags: options,
+        security: [
+          {
+            bearerAuth: []
+          }
+        ]
       }
-    )
-  })
+    },
+    async request => {
+      return request.user.address
+    }
+  )
 }
