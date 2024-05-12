@@ -1,4 +1,5 @@
 import fastifyJwt from "@fastify/jwt"
+import fastifyMultipart from "@fastify/multipart"
 import fastifySensible from "@fastify/sensible"
 import fastifySwagger from "@fastify/swagger"
 import fastifySwaggerUI from "@fastify/swagger-ui"
@@ -8,7 +9,6 @@ import {
   serializerCompiler,
   validatorCompiler
 } from "fastify-type-provider-zod"
-import fastifyMultipart from "@fastify/multipart"
 
 import { adminRoutes } from "./routes/admin.routes"
 import { userRoutes } from "./routes/user.routes"

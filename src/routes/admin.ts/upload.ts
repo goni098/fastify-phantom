@@ -1,5 +1,6 @@
-import { MaybeArray } from "@root/types/MaybeArray"
 import type { FastifyPluginAsync } from "fastify"
+
+import type { MaybeArray } from "@root/types/MaybeArray"
 
 type Body = {
   avatar: MaybeArray<Buffer>
@@ -19,7 +20,7 @@ export const uploadFileHandlers: FastifyPluginAsync = async self => {
         ]
       }
     },
-    async (request, reply) => {
+    async request => {
       console.log(request.body.avatar)
       console.log(request.body.background)
 

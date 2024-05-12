@@ -1,6 +1,6 @@
 import type { FastifyPluginAsync } from "fastify"
 
-import type { Tags } from "@root/types/tags"
+import type { Tags } from "@root/types/Tags"
 
 import { createProjectHandler } from "./admin.ts/create-project"
 import { uploadFileHandlers } from "./admin.ts/upload"
