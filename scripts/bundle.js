@@ -1,4 +1,4 @@
-const esbuild = require("esbuild");
+const esbuild = require("esbuild")
 
 function main() {
   esbuild
@@ -9,11 +9,11 @@ function main() {
       minify: true,
       sourcemap: true,
       format: "cjs",
-      entryPoints: ["./src/main.ts"],
+      entryPoints: ["./src/main.ts", "./src/bin/*"],
       external: ["@fastify/swagger-ui"],
       outdir: "target"
     })
-    .then(() => console.log("bundle finished"));
+    .then(() => console.log("bundle finished"))
 }
 
-main();
+main()
