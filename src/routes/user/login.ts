@@ -3,6 +3,7 @@ import type { ZodTypeProvider } from "fastify-type-provider-zod"
 import type { Address } from "viem"
 import { verifyMessage } from "viem"
 import { z } from "zod"
+
 import {
   userRefreshTokenKey,
   userSignMessageKey

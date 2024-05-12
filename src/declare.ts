@@ -1,9 +1,11 @@
 import "@fastify/jwt"
+import type { Queue } from "bullmq"
 import type { Address } from "viem"
 
 declare module "fastify" {
   interface FastifyInstance {
     // authenticate: <T>(req: FastifyRequest, rep: FastifyReply) => Promise<T>;
+    queue: Queue
   }
 }
 

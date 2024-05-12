@@ -1,36 +1,31 @@
-// import Queue from "bull";
-// import type { FastifyPluginAsync } from "fastify";
-// import fastifyPlugin from "fastify-plugin";
-// import { intoError } from "@root/utils/into-error";
+import type { Job } from "bullmq"
+import { Queue, Worker } from "bullmq"
+import type { FastifyPluginAsync } from "fastify"
+import fastifyPlugin from "fastify-plugin"
 
-// export type Queues = Readonly<{
-//   email: ["send_r_mail", "send_t_mail"];
-//   notification: ["send_r_notification", "send_t_notification"];
-// }>;
+import { redis } from "@root/infrastrutures/redis"
 
-// type QueueConfig<Q extends keyof Queues> = {
-//   name: Q;
-//   job: Queues[Q][number];
-//   consumer: (args: Queue.Job<NonNullable<unknown>>) => Promise<void>;
-//   opts?: Queue.QueueOptions;
-// };
+const bull: FastifyPluginAsync<{
+  queueName: string
+  processor: (job: Job) => Promise<void>
+}> = async (self, { queueName, processor }) => {
+  const queue = new Queue(queueName, { connection: redis })
 
-// const bull: FastifyPluginAsync<QueueConfig<any>> = async (
-//   self,
-//   { consumer, job, name, opts }
-// ) => {
-//   const queue = new Queue(name, opts);
+  const worker = new Worker(queueName, processor, {
+    connection: redis,
+    concurrency: 3
+  })
 
-//   queue.process(job, async (job, done) => {
-//     try {
-//       await consumer(job);
-//       done();
-//     } catch (error) {
-//       done(intoError(error));
-//     }
-//   });
+  worker.on("completed", job => {
+    console.log(`${job.name}:${job.id} has completed!`)
+  })
 
-//   self.decorate("queue", queue).decorate("job", job);
-// };
+  worker.on("error", error => {
+    console.error(`error on queue: ${queueName}`)
+    console.error(error)
+  })
 
-// export const bullPlugin = fastifyPlugin(bull);
+  self.decorate("queue", queue)
+}
+
+export const bullPlugin = fastifyPlugin(bull)

@@ -23,7 +23,6 @@ server.setSerializerCompiler(serializerCompiler)
 server.register(fastifyMultipart, { attachFieldsToBody: "keyValues" })
 server.register(fastifySensible)
 server.register(fastifyJwt, { secret: ACCESS_TOKEN_SECRET })
-
 server.register(fastifySwagger, {
   openapi: {
     openapi: "3.1.0",
@@ -44,10 +43,16 @@ server.register(fastifySwagger, {
   },
   transform: jsonSchemaTransform
 })
-
 server.register(fastifySwaggerUI, {
   routePrefix: "/documentation"
 })
+// server.register(bullPlugin, {
+//   queueName: "email",
+//   processor: async (job: Job<{ email: string }>) => {
+//     await sleep(4000)
+//     console.log("email: ", job.data.email)
+//   }
+// })
 
 // register routes
 server.register(userRoutes, { prefix: "users" })
