@@ -1,6 +1,6 @@
-import type { Address } from "viem";
+import type { Address } from "viem"
 
-import { prisma } from "@root/infrastrutures/database";
+import { prisma } from "@root/infrastrutures/database"
 
 export class UserRepository {
   static findByAddress(address: Address) {
@@ -8,7 +8,7 @@ export class UserRepository {
       where: {
         address
       }
-    });
+    })
   }
 
   static createIfNotExist(address: Address) {
@@ -20,6 +20,6 @@ export class UserRepository {
       where: {
         address
       }
-    });
+    })
   }
 }

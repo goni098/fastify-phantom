@@ -1,3 +1,3 @@
 export type Tags = {
-  tags: Array<string>;
-};
+  tags: Array<string>
+}

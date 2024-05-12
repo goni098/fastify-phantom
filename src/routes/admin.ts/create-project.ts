@@ -1,6 +1,6 @@
-import type { FastifyPluginAsync } from "fastify";
+import type { FastifyPluginAsync } from "fastify"
 
-import { adminAuthPlugin } from "@root/plugins/admin-auth.plugin";
+import { adminAuthPlugin } from "@root/plugins/admin-auth.plugin"
 
 export const createProjectHandler: FastifyPluginAsync<Array<string>> = async (
   self,
@@ -8,7 +8,7 @@ export const createProjectHandler: FastifyPluginAsync<Array<string>> = async (
 ) => {
   self.register(adminAuthPlugin).after(() => {
     self.post(
-      "/projects",
+      "/upload/files",
       {
         schema: {
           tags: options,
@@ -20,8 +20,8 @@ export const createProjectHandler: FastifyPluginAsync<Array<string>> = async (
         }
       },
       async request => {
-        return request.user.address;
+        return request.user.address
       }
-    );
-  });
-};
+    )
+  })
+}
