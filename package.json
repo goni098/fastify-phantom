@@ -14,7 +14,8 @@
     "check-types": "tsc --noemit",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --cache --max-warnings=0",
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@fastify/jwt": "^8.0.1",
@@ -49,5 +50,9 @@
     "prisma": "5.13.0",
     "tsc-alias": "^1.8.9",
     "typescript": "^5.4.5"
-  }
+  },
+  "engines": {
+    "node": ">=20.13.0"
+  },
+  "packageManager": "pnpm@9.1.0"
 }
